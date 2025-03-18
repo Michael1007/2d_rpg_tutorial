@@ -10,7 +10,6 @@ const MAX_SPEED = 100
 # Velocity = the x and y position combined
 var vel = Vector2.ZERO
 
-
 # Called when the node enters the scene tree for the first time
 #func _ready():
 	#print("Hello world.")
@@ -23,7 +22,7 @@ func _physics_process(delta):
 	input_vector = input_vector.normalized()
 	
 	if input_vector != Vector2.ZERO:
-		vel = input_vector * MAX_SPEED
+		vel += input_vector * MAX_SPEED
 	else:
 		vel = Vector2.ZERO
 		
