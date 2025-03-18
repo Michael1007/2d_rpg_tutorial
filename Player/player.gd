@@ -6,16 +6,12 @@ extends CharacterBody2D
 # var b = "text"
 
 # When ACCELERATION was 200, it felt like we were on ice. Could be useful
-const ACCELERATION = 10
-const MAX_SPEED = 100
-const FRICTION = 10
+const ACCELERATION = 500
+const MAX_SPEED = 80
+const FRICTION = 500
 
 # Velocity = the x and y position combined
 var vel = Vector2.ZERO
-
-# Called when the node enters the scene tree for the first time
-#func _ready():
-	#print("Hello world.")
 
 # Look at "Search help" in top bar to see what this function does.
 # "delta" is used for real world time, NOT framerate
@@ -27,14 +23,11 @@ func _physics_process(delta):
 	
 	# multipy delta whenver you have something that changes over time
 	if input_vector != Vector2.ZERO:
-		vel += input_vector * ACCELERATION * delta
-		vel = vel.limit_length(MAX_SPEED * delta)
+		vel = vel.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
 		vel = vel.move_toward(Vector2.ZERO, FRICTION * delta)
 	
+	velocity = vel
 	#print(vel)
-	move_and_collide(vel)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	move_and_slide()
+	vel = velocity
