@@ -1,10 +1,12 @@
+# Code tutorial by Heartbeast
 extends CharacterBody2D
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
-const ACCELERATION = 10
+# When ACCELERATION was 200, it felt like we were on ice. Could be useful
+const ACCELERATION = 200
 const MAX_SPEED = 100
 
 # Velocity = the x and y position combined
@@ -22,7 +24,7 @@ func _physics_process(delta):
 	input_vector = input_vector.normalized()
 	
 	if input_vector != Vector2.ZERO:
-		vel += input_vector * MAX_SPEED
+		vel += input_vector * ACCELERATION * delta
 	else:
 		vel = Vector2.ZERO
 		
