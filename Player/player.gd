@@ -26,7 +26,10 @@ func _physics_process(delta):
 	
 	# multipy delta whenver you have something that changes over time
 	if input_vector != Vector2.ZERO:
-		animationPlayer.play("RunRight") # in this if statement is when we are moving
+		if input_vector.x > 0:
+			animationPlayer.play("RunRight") # in this if statement is when we are moving
+		else:
+			animationPlayer.play("RunLeft")
 		vel = vel.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
 		animationPlayer.play("IdleRight")
