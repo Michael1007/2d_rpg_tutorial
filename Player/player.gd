@@ -13,6 +13,9 @@ const FRICTION = 500
 # Velocity = the x and y position combined
 var vel = Vector2.ZERO
 
+# Once the game is ready, this will be set up and ready to go (an "onready" variable)
+@onready var animationPlayer = $AnimationPlayer # '$' is shorthand for path to a node, which is in the same scene
+
 # Look at "Search help" in top bar to see what this function does.
 # "delta" is used for real world time, NOT framerate
 func _physics_process(delta):
@@ -23,8 +26,10 @@ func _physics_process(delta):
 	
 	# multipy delta whenver you have something that changes over time
 	if input_vector != Vector2.ZERO:
+		animationPlayer.play("RunRight") # in this if statement is when we are moving
 		vel = vel.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
+		animationPlayer.play("IdleRight")
 		vel = vel.move_toward(Vector2.ZERO, FRICTION * delta)
 	
 	velocity = vel
