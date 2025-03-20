@@ -30,7 +30,7 @@ var vel = Vector2.ZERO
 func _ready():
 	animationTree.active = true
 
-func _physics_process(delta):
+func _process(delta):
 	match state: # acts like a switch statement
 		MOVE:
 			move_state(delta) # beginning of a state machine (only one block of code is run at once
@@ -68,7 +68,11 @@ func move_state(delta):
 		state = ATTACK
 	
 func attack_state(delta):
-	velocity = Vector2.ZERO # so they don't move with friction when attack
+	vel = Vector2.ZERO # so they don't move with friction when attack
+	velocity = vel
+	move_and_slide()
+	vel = velocity
+	
 	animationState.travel("Attack")
 	
 func attack_animation_finish():
