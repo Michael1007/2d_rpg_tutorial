@@ -30,7 +30,7 @@ var vel = Vector2.ZERO
 func _ready():
 	animationTree.active = true
 
-func _process(delta):
+func _physics_process(delta):
 	match state: # acts like a switch statement
 		MOVE:
 			move_state(delta) # beginning of a state machine (only one block of code is run at once
