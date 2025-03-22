@@ -8,6 +8,7 @@ extends CharacterBody2D
 # When ACCELERATION was 200, it felt like we were on ice. Could be useful
 const ACCELERATION = 500
 const MAX_SPEED = 80
+const ROLL_SPEED = 125
 const FRICTION = 500
 
 # enumeration: setting "variables" that cannot change. 
@@ -21,6 +22,7 @@ enum {
 var state = MOVE
 # Velocity = the x and y position combined
 var vel = Vector2.ZERO
+var roll_vector = Vector2.LEFT
 
 # Once the game is ready, this will be set up and ready to go (an "onready" variable)
 @onready var animationPlayer = $AnimationPlayer # '$' is shorthand for path to a node, which is in the same scene
@@ -35,7 +37,7 @@ func _physics_process(delta):
 		MOVE:
 			move_state(delta) # beginning of a state machine (only one block of code is run at once
 		ROLL:
-			pass
+			roll_state(delta)
 		ATTACK:
 			attack_state(delta)
 
@@ -47,9 +49,11 @@ func move_state(delta):
 	
 	# multipy delta whenver you have something that changes over time
 	if input_vector != Vector2.ZERO:
+		roll_vector = input_vector # ONLY do if vector isn't zero
 		animationTree.set("parameters/Idle/blend_position", input_vector) # set blend position for idle
 		animationTree.set("parameters/Run/blend_position", input_vector) # set blend position for run
 		animationTree.set("parameters/Attack/blend_position", input_vector) 
+		animationTree.set("parameters/Roll/blend_position", input_vector) 
 		# ^^^NOT in attack state because our input vector is not in attack state
 		# also we dont want them to change direction of attack mid animation
 		
@@ -58,22 +62,32 @@ func move_state(delta):
 	else:
 		animationState.travel("Idle")
 		vel = vel.move_toward(Vector2.ZERO, FRICTION * delta)
+	move()
 	
-	velocity = vel
-
-	move_and_slide()
-	vel = velocity
+	if Input.is_action_just_pressed("Roll"):
+		state = ROLL
 	
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
-	
+
+func roll_state(delta):
+	velocity = roll_vector * ROLL_SPEED
+	animationState.travel("Roll")
+	move_and_slide()
+
 func attack_state(delta):
 	vel = Vector2.ZERO # so they don't move with friction when attack
+	move()
+	animationState.travel("Attack")
+	
+func move():
 	velocity = vel
 	move_and_slide()
 	vel = velocity
 	
-	animationState.travel("Attack")
-	
+func roll_animation_finished():
+	velocity = velocity * 0.8
+	state = MOVE
+
 func attack_animation_finish():
 	state = MOVE
