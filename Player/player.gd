@@ -5,6 +5,8 @@ extends CharacterBody2D
 # var a = 2
 # var b = "text"
 
+const PlayerHurtSound = preload("res://Player/player_hurt_sound.tscn")
+
 # When ACCELERATION was 200, it felt like we were on ice. Could be useful
 @export var ACCELERATION = 500
 @export var MAX_SPEED = 80
@@ -30,11 +32,13 @@ var stats = PlayerStats
 @onready var animationTree = $AnimationTree
 @onready var animationState = animationTree.get("parameters/playback") # Stores what we hvae set up in root, can access that info
 @onready var hurtbox = $Hurtbox
+@onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 
 
 func _ready():
 	stats.connect("no_health", Callable(self, "queue_free"))
 	animationTree.active = true
+	blinkAnimationPlayer.play("Stop")
 
 func _physics_process(delta):
 	match state: # acts like a switch statement
@@ -74,12 +78,12 @@ func move_state(delta):
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
 
-func roll_state(delta):
+func roll_state(_delta):
 	velocity = roll_vector * ROLL_SPEED
 	animationState.travel("Roll")
 	move_and_slide()
 
-func attack_state(delta):
+func attack_state(_delta):
 	vel = Vector2.ZERO # so they don't move with friction when attack
 	move()
 	animationState.travel("Attack")
@@ -97,6 +101,17 @@ func attack_animation_finish():
 	state = MOVE
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	stats.health -= 1
-	hurtbox.start_invincibility(0.5)
+	stats.health -= area.damage
+	hurtbox.start_invincibility(0.6)
 	hurtbox.create_hit_effect()
+	var playerHurtSound = PlayerHurtSound.instantiate()
+	call_deferred("add_audio_to_scene", playerHurtSound)
+
+func add_audio_to_scene(sound):
+	get_tree().current_scene.add_child(sound)
+
+func _on_hurtbox_invincibility_started() -> void:
+	blinkAnimationPlayer.play("Start")
+
+func _on_hurtbox_invincibility_ended() -> void:
+	blinkAnimationPlayer.play("Stop")

@@ -8,5 +8,5 @@ func can_see_player():
 func _on_body_entered(body: Node2D) -> void: # player body enters zone
 	player = body
 
-func _on_body_exited(body: Node2D) -> void: # player body exits zone
+func _on_body_exited(_body: Node2D) -> void: # player body exits zone
 	player = null

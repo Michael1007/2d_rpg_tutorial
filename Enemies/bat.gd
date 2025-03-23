@@ -23,9 +23,11 @@ var state = CHASE
 @onready var hurtbox = $Hurtbox
 @onready var softCollision = $SoftCollision
 @onready var wanderController = $WanderController
+@onready var animationPlayer = $AnimationPlayer
 
 func _ready():
 	state = pick_random_state([IDLE, WANDER])
+	animationPlayer.play("Stop")
 
 func _physics_process(delta):
 	velocity = velocity.move_toward(Vector2.ZERO,  FRICTION * delta)
@@ -85,9 +87,16 @@ func _on_hurtbox_area_entered(area): # "area" is like our hitbox
 	# if you do queue_free() here it destroys the bat
 	
 	hurtbox.create_hit_effect()
+	hurtbox.start_invincibility(0.4)
 
 func _on_stats_no_health() -> void:
 	queue_free()
 	var enemyDeathEffect = EnemyDeathEffect.instantiate()
 	get_parent().add_child(enemyDeathEffect)
 	enemyDeathEffect.global_position = global_position
+
+func _on_hurtbox_invincibility_started() -> void:
+	animationPlayer.play("Start")
+
+func _on_hurtbox_invincibility_ended() -> void:
+	animationPlayer.play("Stop")
