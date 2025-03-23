@@ -22,7 +22,7 @@ enum {
 var state = MOVE
 # Velocity = the x and y position combined
 var vel = Vector2.ZERO
-var roll_vector = Vector2.LEFT
+var roll_vector = Vector2.DOWN
 
 # Once the game is ready, this will be set up and ready to go (an "onready" variable)
 @onready var animationPlayer = $AnimationPlayer # '$' is shorthand for path to a node, which is in the same scene
