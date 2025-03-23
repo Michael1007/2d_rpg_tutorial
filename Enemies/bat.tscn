@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b8ga5ba1e126k"]
+[gd_scene load_steps=21 format=3 uid="uid://b8ga5ba1e126k"]
 
 [ext_resource type="Script" uid="uid://cu8bdgbx0enxo" path="res://Enemies/bat.gd" id="1_g687e"]
 [ext_resource type="Texture2D" uid="uid://bq6qvktb35roc" path="res://Enemies/Bat.png" id="1_p2utt"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cdt6d1kfqwyyk" path="res://Enemies/player_detection_zone.tscn" id="6_nc5xu"]
 [ext_resource type="PackedScene" uid="uid://b72o4lj50sfwf" path="res://Hitboxes and Hurtboxes/hitbox.tscn" id="7_0g1cs"]
 [ext_resource type="PackedScene" uid="uid://s6xim6e0x08n" path="res://Hitboxes and Hurtboxes/soft_collision.tscn" id="8_ppg8i"]
+[ext_resource type="PackedScene" uid="uid://dp5vhu0eaav16" path="res://Enemies/wander_controller.tscn" id="9_srckj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nc5xu"]
 atlas = ExtResource("1_p2utt")
@@ -81,7 +82,7 @@ position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_0g1cs")
 animation = &"Fly"
 autoplay = "Fly"
-frame_progress = 0.914736
+frame_progress = 0.719076
 
 [node name="ShadowSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_vut0d")
@@ -122,6 +123,8 @@ debug_color = Color(0.869238, 0.317574, 0.40123, 0.42)
 [node name="CollisionShape2D" parent="SoftCollision" index="0"]
 shape = SubResource("CircleShape2D_srckj")
 debug_color = Color(0.252473, 0.504997, 1, 0.42)
+
+[node name="WanderController" parent="." instance=ExtResource("9_srckj")]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]

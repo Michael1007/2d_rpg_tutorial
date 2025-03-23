@@ -852,60 +852,6 @@ position = Vector2(128, 160)
 [node name="Tree3" parent="Trees" instance=ExtResource("9_ioo17")]
 position = Vector2(16, 152)
 
-[node name="Tree4" parent="Trees" instance=ExtResource("9_ioo17")]
-position = Vector2(-16, 184)
-
-[node name="Tree5" parent="Trees" instance=ExtResource("9_ioo17")]
-position = Vector2(-16, 160)
-
-[node name="Tree6" parent="Trees" instance=ExtResource("9_ioo17")]
-position = Vector2(-24, 40)
-
-[node name="Tree7" parent="Trees" instance=ExtResource("9_ioo17")]
-position = Vector2(-24, 56)
-
-[node name="Tree8" parent="Trees" instance=ExtResource("9_ioo17")]
-position = Vector2(-48, 72)
-
-[node name="Tree9" parent="Trees" instance=ExtResource("9_ioo17")]
-position = Vector2(-48, 88)
-
-[node name="Tree10" parent="Trees" instance=ExtResource("9_ioo17")]
-position = Vector2(-48, 104)
-
-[node name="Tree11" parent="Trees" instance=ExtResource("9_ioo17")]
-position = Vector2(-48, 120)
-
-[node name="Tree12" parent="Trees" instance=ExtResource("9_ioo17")]
-position = Vector2(-16, 136)
-
-[node name="Tree13" parent="Trees" instance=ExtResource("9_ioo17")]
-position = Vector2(-48, 136)
-
-[node name="Tree14" parent="Trees" instance=ExtResource("9_ioo17")]
-position = Vector2(368, 48)
-
-[node name="Tree15" parent="Trees" instance=ExtResource("9_ioo17")]
-position = Vector2(368, 112)
-
-[node name="Tree16" parent="Trees" instance=ExtResource("9_ioo17")]
-position = Vector2(400, 112)
-
-[node name="Tree17" parent="Trees" instance=ExtResource("9_ioo17")]
-position = Vector2(400, 88)
-
-[node name="Tree18" parent="Trees" instance=ExtResource("9_ioo17")]
-position = Vector2(400, 64)
-
-[node name="Tree19" parent="Trees" instance=ExtResource("9_ioo17")]
-position = Vector2(400, 48)
-
-[node name="Tree20" parent="Trees" instance=ExtResource("9_ioo17")]
-position = Vector2(368, 136)
-
-[node name="Tree21" parent="Trees" instance=ExtResource("9_ioo17")]
-position = Vector2(368, 24)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HealthUI" parent="CanvasLayer" instance=ExtResource("8_gbfbk")]
