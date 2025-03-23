@@ -28,7 +28,7 @@ func _physics_process(delta):
 	#state machine
 	match state:
 		IDLE:
-			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+			velocity = velocity.move_toward(Vector2.ZERO, 200 * delta)
 			seek_player()
 			
 		WANDER:
@@ -43,8 +43,7 @@ func _physics_process(delta):
 			else:
 				state = IDLE
 			sprite.flip_h = velocity.x < 0
-	
-	move_and_slide()
+			move_and_slide()
 
 func seek_player():
 	if playerDetectionZone.can_see_player():
