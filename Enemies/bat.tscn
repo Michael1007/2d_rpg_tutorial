@@ -66,8 +66,10 @@ radius = 4.0
 
 [node name="Bat" type="CharacterBody2D"]
 collision_layer = 16
+platform_floor_layers = 0
 script = ExtResource("1_g687e")
-MAX_SPEED = 30
+MAX_SPEED = 60
+FRICTION = 0
 
 [node name="BatSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
