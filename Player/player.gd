@@ -6,10 +6,10 @@ extends CharacterBody2D
 # var b = "text"
 
 # When ACCELERATION was 200, it felt like we were on ice. Could be useful
-const ACCELERATION = 500
-const MAX_SPEED = 80
-const ROLL_SPEED = 125
-const FRICTION = 500
+@export var ACCELERATION = 500
+@export var MAX_SPEED = 80
+@export var ROLL_SPEED = 125
+@export var FRICTION = 500
 
 # enumeration: setting "variables" that cannot change. 
 # automatically created with values (0, 1, 2, etc.)

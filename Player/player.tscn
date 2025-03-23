@@ -1,8 +1,9 @@
-[gd_scene load_steps=52 format=3 uid="uid://ddscjx6j4f7kq"]
+[gd_scene load_steps=53 format=3 uid="uid://ddscjx6j4f7kq"]
 
 [ext_resource type="Script" uid="uid://6eb4wtow1eh7" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://cepd7alw144x1" path="res://Player/Player.png" id="2_btcbx"]
 [ext_resource type="PackedScene" uid="uid://b72o4lj50sfwf" path="res://Hitboxes and Hurtboxes/hitbox.tscn" id="3_btcbx"]
+[ext_resource type="Script" uid="uid://bolbwvi8tt6wi" path="res://Player/SwordHitbox.gd" id="4_gwnis"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tlwt5"]
 radius = 4.0
@@ -723,6 +724,7 @@ position = Vector2(0, -4)
 [node name="SwordHitbox" parent="HitboxPivot" instance=ExtResource("3_btcbx")]
 position = Vector2(15, 0)
 collision_layer = 8
+script = ExtResource("4_gwnis")
 
 [node name="CollisionShape2D" parent="HitboxPivot/SwordHitbox" index="0"]
 position = Vector2(0, -1)
