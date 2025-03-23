@@ -23,13 +23,17 @@ var state = MOVE
 # Velocity = the x and y position combined
 var vel = Vector2.ZERO
 var roll_vector = Vector2.DOWN
+var stats = PlayerStats
 
 # Once the game is ready, this will be set up and ready to go (an "onready" variable)
 @onready var animationPlayer = $AnimationPlayer # '$' is shorthand for path to a node, which is in the same scene
 @onready var animationTree = $AnimationTree
 @onready var animationState = animationTree.get("parameters/playback") # Stores what we hvae set up in root, can access that info
+@onready var hurtbox = $Hurtbox
+
 
 func _ready():
+	stats.connect("no_health", Callable(self, "queue_free"))
 	animationTree.active = true
 
 func _physics_process(delta):
@@ -91,3 +95,8 @@ func roll_animation_finished():
 
 func attack_animation_finish():
 	state = MOVE
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	stats.health -= 1
+	hurtbox.start_invincibility(0.5)
+	hurtbox.create_hit_effect()

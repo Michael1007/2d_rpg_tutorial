@@ -19,6 +19,7 @@ var state = CHASE
 @onready var sprite = $BatSprite
 @onready var stats = $Stats
 @onready var playerDetectionZone = $PlayerDetectionZone
+@onready var hurtbox = $Hurtbox
 
 func _physics_process(delta):
 	velocity = velocity.move_toward(Vector2.ZERO,  FRICTION * delta)
@@ -56,6 +57,8 @@ func _on_hurtbox_area_entered(area): # "area" is like our hitbox
 	var direction = (position - area.owner.position).normalized()
 	velocity = direction * KNOCKBACK_SPEED
 	# if you do queue_free() here it destroys the bat
+	
+	hurtbox.create_hit_effect()
 
 func _on_stats_no_health() -> void:
 	queue_free()
