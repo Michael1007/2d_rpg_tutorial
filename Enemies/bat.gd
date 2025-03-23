@@ -20,6 +20,7 @@ var state = CHASE
 @onready var stats = $Stats
 @onready var playerDetectionZone = $PlayerDetectionZone
 @onready var hurtbox = $Hurtbox
+@onready var softCollision = $SoftCollision
 
 func _physics_process(delta):
 	velocity = velocity.move_toward(Vector2.ZERO,  FRICTION * delta)
@@ -43,7 +44,10 @@ func _physics_process(delta):
 			else:
 				state = IDLE
 			sprite.flip_h = velocity.x < 0
-			move_and_slide()
+	
+	if softCollision.is_colliding():
+		velocity += softCollision.get_push_vector() * delta * 400 # soem value makes sure they push away, higher less likly to overlap
+	move_and_slide()
 
 func seek_player():
 	if playerDetectionZone.can_see_player():
