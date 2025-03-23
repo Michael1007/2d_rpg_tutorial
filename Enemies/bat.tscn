@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://b8ga5ba1e126k"]
+[gd_scene load_steps=16 format=3 uid="uid://b8ga5ba1e126k"]
 
 [ext_resource type="Script" uid="uid://cu8bdgbx0enxo" path="res://Enemies/bat.gd" id="1_g687e"]
 [ext_resource type="Texture2D" uid="uid://bq6qvktb35roc" path="res://Enemies/Bat.png" id="1_p2utt"]
 [ext_resource type="Texture2D" uid="uid://k7hbqel14hn0" path="res://Shadows/SmallShadow.png" id="2_vut0d"]
 [ext_resource type="PackedScene" uid="uid://dosjtjb0ac4w1" path="res://Hitboxes and Hurtboxes/hurtbox.tscn" id="3_va2ne"]
 [ext_resource type="PackedScene" uid="uid://bnf1viu8f1lwn" path="res://stats.tscn" id="5_i84q7"]
+[ext_resource type="PackedScene" uid="uid://cdt6d1kfqwyyk" path="res://Enemies/player_detection_zone.tscn" id="6_nc5xu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vut0d"]
 atlas = ExtResource("1_p2utt")
@@ -56,16 +57,20 @@ radius = 4.0
 radius = 7.0
 height = 18.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0g1cs"]
+radius = 84.0
+
 [node name="Bat" type="CharacterBody2D"]
 collision_layer = 16
 script = ExtResource("1_g687e")
+ACCELERATION = 260
+MAX_SPEED = 30
 
 [node name="BatSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_0g1cs")
 animation = &"Fly"
 autoplay = "Fly"
-frame_progress = 0.731782
 
 [node name="ShadowSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_vut0d")
@@ -84,7 +89,15 @@ shape = SubResource("CapsuleShape2D_g687e")
 [node name="Stats" parent="." instance=ExtResource("5_i84q7")]
 max_health = 2
 
+[node name="PlayerDetectionZone" parent="." instance=ExtResource("6_nc5xu")]
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+modulate = Color(1, 1, 1, 0.360784)
+shape = SubResource("CircleShape2D_0g1cs")
+debug_color = Color(0.558395, 0.557715, 0.160656, 0.42)
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]
 
 [editable path="Hurtbox"]
+[editable path="PlayerDetectionZone"]

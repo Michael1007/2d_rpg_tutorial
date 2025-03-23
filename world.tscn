@@ -762,7 +762,7 @@ tile_set = SubResource("TileSet_pkg7o")
 format = 2
 
 [node name="Player" parent="." instance=ExtResource("2_fj7yv")]
-position = Vector2(176, 88)
+position = Vector2(120, 88)
 
 [node name="Bushes" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -821,10 +821,10 @@ position = Vector2(32, 32)
 position = Vector2(48, 144)
 
 [node name="Bat" parent="." instance=ExtResource("7_pkg7o")]
-position = Vector2(72, 88)
+position = Vector2(32, 112)
 
 [node name="Bat2" parent="." instance=ExtResource("7_pkg7o")]
-position = Vector2(192, 40)
+position = Vector2(208, 32)
 
 [node name="Bat3" parent="." instance=ExtResource("7_pkg7o")]
 position = Vector2(216, 160)
