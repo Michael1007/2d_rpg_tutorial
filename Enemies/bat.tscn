@@ -67,7 +67,7 @@ radius = 7.0
 height = 18.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0g1cs"]
-radius = 68.0294
+radius = 84.006
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ppg8i"]
 radius = 4.0
@@ -166,7 +166,6 @@ shape = SubResource("CapsuleShape2D_g687e")
 max_health = 2
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource("6_nc5xu")]
-visible = false
 
 [node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
 modulate = Color(1, 1, 1, 0.360784)
