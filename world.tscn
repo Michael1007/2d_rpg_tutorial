@@ -741,7 +741,7 @@ texture_repeat = 2
 position = Vector2(160, 90)
 texture = ExtResource("1_tlwt5")
 region_enabled = true
-region_rect = Rect2(0, -32, 720, 448)
+region_rect = Rect2(0, -32, 624, 352)
 
 [node name="DirtPathTileLayer" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -750,7 +750,7 @@ tile_set = SubResource("TileSet_dwbse")
 
 [node name="DirtCliffTileLayer" type="TileMapLayer" parent="."]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAACAAAAAAACAAIAAAABAAAAAAABAAIAAAAAAAAAAAAIAAEAAAAAAP//AAABAAAAAAABAP//AAABAAAAAAACAP//AAACAAAAAAD//wAAAAAAAAIAAAD/////AAAAAAAAAAAIAAAAAAAAAAIAAAAJAAAAAAAGAAEAAAAJAAEAAAAAAAIAAAAKAAEAAAACAAIAAAAKAAAAAAACAAEAAAAKAP//AAACAAAAAAAJAP//AAABAAAAAAAIAP//AAAAAAAAAAAJAAQAAAAGAAQAAAAIAAQAAAAAAAMAAAAJAAMAAAAAAAAAAAAKAAMAAAACAAAAAAAKAAQAAAACAAEAAAAKAAUAAAACAAIAAAAJAAUAAAAAAAIAAAAAAAEAAAADAAIAAAADAAQAAAAAAAAAAAAEAAQAAAAHAAIAAAAEAAMAAAADAAAAAAAEAAUAAAACAAIAAAADAAUAAAAGAAMAAAACAAUAAAABAAMAAAABAAUAAAABAAMAAAAAAAUAAAAAAAMAAAA=")
+tile_map_data = PackedByteArray("AAACAAAAAAACAAIAAAABAAAAAAABAAIAAAAAAAAAAAAFAAEAAAAAAP//AAABAAAAAAACAP//AAACAAEAAAD//wAAAAAAAAEAAAD/////AAAAAAAAAAAIAAAAAAAAAAIAAAAJAAAAAAAGAAEAAAAJAAEAAAAAAAIAAAAKAAEAAAAGAAEAAAAKAAAAAAAFAAIAAAAKAP//AAACAAAAAAAJAP//AAABAAAAAAAIAP//AAAGAAAAAAAJAAQAAAAGAAQAAAAIAAQAAAAAAAMAAAAJAAMAAAAAAAAAAAAKAAMAAAAJAAEAAAAKAAQAAAACAAEAAAAKAAUAAAACAAEAAAAJAAUAAAAAAAEAAAAAAAEAAAACAAIAAAADAAQAAAAAAAAAAAAEAAQAAAAHAAIAAAAEAAMAAAADAAAAAAAEAAUAAAAHAAEAAAADAAUAAAAGAAMAAAACAAUAAAABAAMAAAABAAUAAAABAAMAAAAAAAUAAAABAAMAAAD//wEAAAAJAAEAAAD//wQAAAAHAAEAAAD+/wEAAAAAAAAAAAD+/wQAAAAAAAIAAAD//wUAAAAEAAMAAAAEAAYAAAAEAAMAAAAFAAYAAAABAAMAAAAGAAYAAAABAAMAAAAHAAYAAAABAAMAAAAIAAYAAAABAAMAAAAJAAYAAAAGAAMAAAAKAAYAAAACAAIAAAALAAAAAAACAAAAAAALAAEAAAACAAEAAAALAAMAAAACAAIAAAAHAP//AAAEAAMAAAAHAP7/AAAHAAAAAAAGAP7/AAABAAMAAAAFAP7/AAABAAMAAAAEAP7/AAABAAMAAAADAP7/AAABAAMAAAACAP7/AAAFAAAAAAABAP7/AAAAAAAAAAD+/wIAAAAAAAEAAAD+/wMAAAAAAAEAAAABAP//AAABAAEAAAD//wIAAAACAAEAAAD//wMAAAACAAEAAAAKAAIAAAAAAAEAAAALAAIAAAACAAEAAAA=")
 tile_set = SubResource("TileSet_pkg7o")
 
 [node name="DirtPathTileMap" type="TileMap" parent="."]
@@ -762,10 +762,15 @@ format = 2
 visible = false
 tile_set = SubResource("TileSet_pkg7o")
 format = 2
+layer_0/tile_data = PackedInt32Array(131071, 196608, 3)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(120, 88)
 process_callback = 0
+limit_left = 0
+limit_top = 0
+limit_right = 320
+limit_bottom = 90
 position_smoothing_enabled = true
 position_smoothing_speed = 50.0
 
@@ -790,6 +795,9 @@ position = Vector2(240, 144)
 [node name="Bush4" parent="Bushes" instance=ExtResource("2_tlwt5")]
 position = Vector2(264, 56)
 
+[node name="Bush7" parent="Bushes" instance=ExtResource("2_tlwt5")]
+position = Vector2(208, -16)
+
 [node name="Bush5" parent="Bushes" instance=ExtResource("2_tlwt5")]
 position = Vector2(176, 160)
 
@@ -809,6 +817,39 @@ position = Vector2(80, 128)
 
 [node name="Grass5" parent="Grass" instance=ExtResource("6_dwbse")]
 position = Vector2(160, 112)
+
+[node name="Grass12" parent="Grass" instance=ExtResource("6_dwbse")]
+position = Vector2(144, -32)
+
+[node name="Grass13" parent="Grass" instance=ExtResource("6_dwbse")]
+position = Vector2(160, -32)
+
+[node name="Grass14" parent="Grass" instance=ExtResource("6_dwbse")]
+position = Vector2(176, -32)
+
+[node name="Grass15" parent="Grass" instance=ExtResource("6_dwbse")]
+position = Vector2(176, -16)
+
+[node name="Grass16" parent="Grass" instance=ExtResource("6_dwbse")]
+position = Vector2(160, -16)
+
+[node name="Grass17" parent="Grass" instance=ExtResource("6_dwbse")]
+position = Vector2(144, -16)
+
+[node name="Grass18" parent="Grass" instance=ExtResource("6_dwbse")]
+position = Vector2(144, 0)
+
+[node name="Grass19" parent="Grass" instance=ExtResource("6_dwbse")]
+position = Vector2(160, 0)
+
+[node name="Grass20" parent="Grass" instance=ExtResource("6_dwbse")]
+position = Vector2(176, 0)
+
+[node name="Grass21" parent="Grass" instance=ExtResource("6_dwbse")]
+position = Vector2(192, 0)
+
+[node name="Grass22" parent="Grass" instance=ExtResource("6_dwbse")]
+position = Vector2(208, 0)
 
 [node name="Grass6" parent="Grass" instance=ExtResource("6_dwbse")]
 position = Vector2(272, 112)
@@ -851,6 +892,24 @@ position = Vector2(128, 160)
 
 [node name="Tree3" parent="Trees" instance=ExtResource("9_ioo17")]
 position = Vector2(16, 152)
+
+[node name="Tree4" parent="Trees" instance=ExtResource("9_ioo17")]
+position = Vector2(-8, 0)
+
+[node name="Tree5" parent="Trees" instance=ExtResource("9_ioo17")]
+position = Vector2(24, 0)
+
+[node name="Tree6" parent="Trees" instance=ExtResource("9_ioo17")]
+position = Vector2(48, -16)
+
+[node name="Tree7" parent="Trees" instance=ExtResource("9_ioo17")]
+position = Vector2(304, 0)
+
+[node name="Tree8" parent="Trees" instance=ExtResource("9_ioo17")]
+position = Vector2(304, 16)
+
+[node name="Tree9" parent="Trees" instance=ExtResource("9_ioo17")]
+position = Vector2(304, 32)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
