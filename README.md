@@ -9,6 +9,8 @@ VIA my commit history, you can see I went through every video individually and d
 
 ### CONTROLS
 Arrowkeys: Movement
+
 `x`: Attack
+
 `z`: Roll (movment implemented, dodging damage functionality not yet added)
 
