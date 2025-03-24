@@ -14,3 +14,7 @@ Arrowkeys: Movement
 
 `z`: Roll (movment implemented, dodging damage functionality not yet added)
 
+### Current Known Bugs
+
+* Bat sprites are slightly glitchy when moving or being damaged. Could not figure out the cause.
+
