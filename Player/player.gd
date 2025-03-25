@@ -38,7 +38,7 @@ var stats = PlayerStats
 func _ready():
 	stats.connect("no_health", Callable(self, "queue_free"))
 	animationTree.active = true
-	blinkAnimationPlayer.play("Stop")
+	#blinkAnimationPlayer.play("Stop")
 
 func _physics_process(delta):
 	match state: # acts like a switch statement
